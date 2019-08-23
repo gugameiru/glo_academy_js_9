@@ -14,3 +14,21 @@ console.log('Период: ' + period + ' месяцев');
 console.log('Цель заработать: ' + mission + ' рублей');
 console.log(addExpenses.toLowerCase().split(', '));
 console.log('Дневной бюджет: ' + budgetDay.toFixed(2) + ' , остаток от деления: ' + money%30);
+
+// Усложнённое задание
+
+let num = 266219;
+
+let numArray = num.toString().split('');
+
+let i = 0;
+let total = 1;
+numArray.forEach(element => {
+    total *= element;
+});
+
+console.log(total);
+
+console.log((total**3).toString().substr(0, 2));
+
+
