@@ -40,13 +40,21 @@ for (let i = 0; i < 2; i++) {
 }
 
 let budgetMonth = +money - +nesessaryExpensesSum1 - +nesessaryExpensesSum2;
-console.log('Доход за месяц: ', budgetMonth);
+console.log('Доход за месяц: ' + budgetMonth + ' рублей');
 
-let timeToMission = Math.ceil(mission / budgetMonth);
-console.log('Цель будет достигнута через:'+ timeToMission + ' месяцев');
+let timeToMission;
 
-let budgetDay = +(Math.floor(budgetMonth/30)).toFixed(2);
-console.log('Бюджет на день: '+ budgetDay);
+// Проверка на деление на ноль:
+
+budgetMonth != 0 ? timeToMission=Math.ceil(mission / budgetMonth) : timeToMission = 0;
+
+// Вывод сообщения о недостижимости цели вместо отрицательного
+// количества месяцев, а то непонятно:
+
+timeToMission > 0 ? console.log('Цель будет достигнута через: '+ timeToMission + ' месяцев') : console.log('Цель недостижима');
+
+let budgetDay = Math.floor(budgetMonth/30);
+console.log('Бюджет на день: '+ budgetDay + ' рублей');
 
 switch (true) {
     case (budgetDay > 800):
