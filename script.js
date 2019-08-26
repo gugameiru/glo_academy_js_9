@@ -1,10 +1,10 @@
-let money = 20000;
-let income = 'Фриланс';
-let addExpenses = '400, 500, 600';
-let deposit = false;
-let mission = 30000;
-let period = 12;
-let budgetDay = money / 30;
+let money = 20000,
+    income = 'Фриланс',
+    addExpenses = 'Электричество, Отопление, Вода',
+    deposit = false,
+    mission = 30000,
+    period = 12,
+    budgetDay = money / 30;
 
 console.log('money:', typeof money);
 console.log('income:', typeof income);
