@@ -5,7 +5,7 @@ let income = 'Фриланс',
     period = 12,
     deposit = false;
 
-let money = prompt('Ваш месячный доход?', 'Введите сумму');
+let money = +prompt('Ваш месячный доход?', 'Введите сумму');
 
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую:', 'Введите наименования расходов');
 console.log(addExpenses.toLowerCase().split(', '));
@@ -35,13 +35,13 @@ for (let i = 0; i < 2; i++) {
         nesessaryExpenses1 = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'Введите наименование');
     }
     if (nesessaryExpensesSum1 != undefined) {
-        nesessaryExpensesSum2 = prompt('Во сколько это обойдется?', 'Введите сумму');
+        nesessaryExpensesSum2 = +prompt('Во сколько это обойдется?', 'Введите сумму');
     } else {
-        nesessaryExpensesSum1 = prompt('Во сколько это обойдется?', 'Введите сумму');
+        nesessaryExpensesSum1 = +prompt('Во сколько это обойдется?', 'Введите сумму');
     }
 }
 
-let budgetMonth = +money - +nesessaryExpensesSum1 - +nesessaryExpensesSum2;
+let budgetMonth = money - nesessaryExpensesSum1 - nesessaryExpensesSum2;
 console.log('Доход за месяц: ' + budgetMonth + ' рублей');
 
 let timeToMission;
@@ -73,6 +73,3 @@ switch (true) {
         break;
 
 }
-
-
-
