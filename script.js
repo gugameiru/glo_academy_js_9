@@ -1,3 +1,5 @@
+'use strict';
+
 let income = 'Фриланс',
     mission = 30000,
     period = 12,
