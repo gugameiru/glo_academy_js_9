@@ -46,7 +46,7 @@ let getExpensesMonth = function() {
         do {
             sum = +prompt('Во сколько это обойдётся?', 'Введите сумму');
         }
-        while(isNaN(money) || money == '' || money == null);
+        while(isNaN(sum) || sum == '' || sum == null);
         sum += sum;
     }
     return sum;
