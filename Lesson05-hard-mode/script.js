@@ -22,13 +22,13 @@ let isSimpleCheck = function(number) {
 };
 
 let isSimple = function(n) {
-    do {
-        if (isSimpleCheck(n)) {
-            console.log(n + ' Делители этого числа: 1 и ' + n);
+    for (let i = 2; i <=n; i++) {
+        if (isSimpleCheck(i)) {
+            console.log(i + ' Делители этого числа: 1 и ' + i);
         }
-        n--;
-    } 
-    while (n>0);
+    }
+    
+    
 };
 
 isSimple(100);
