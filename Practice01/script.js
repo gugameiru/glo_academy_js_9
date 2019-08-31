@@ -115,10 +115,10 @@ let appData = {
         }
     },
     validationString: function(value) {
-        if (typeof value === "string" || value instanceof String || value !== ''){
-            return false;
-        } else {
+        if (value === '' || /[0-9]/.test(value) == true || value == null){
             return true;
+        } else {
+            return false;
         }
     }
 };
