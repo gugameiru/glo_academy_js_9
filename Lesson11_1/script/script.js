@@ -38,6 +38,9 @@ const AppData = function() {
     this.budgetMonth = 0;
     this.expensesMonth = 0;
     this.timeToMission = 0;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+
 };
 
 AppData.prototype.check = function() {
@@ -71,13 +74,13 @@ AppData.prototype.start = function() {
 };
 
 AppData.prototype.showResult = function() {
-    budgetMonthValue.value = this.budgetMonth;
+    budgetMonthValue.value = this.budgetMonth.toFixed(0);
     budgetDayValue.value = this.budgetDay;
     expensesMonthValue.value = this.expensesMonth;
     addExpValue.value = this.addExpenses.join(', ');
     addIncomeValue.value = this.addIncome.join(', ');
     targetMonthValue.value = Math.ceil(this.getTargetMonth());
-    incPeriodValue.value = this.calcPeriod();
+    incPeriodValue.value = this.calcPeriod().toFixed(0);
     periodSelect.addEventListener('change', (() => {
         incPeriodValue.value = this.calcPeriod();
     }).bind(this));
@@ -140,8 +143,8 @@ AppData.prototype.getExpensesMonth = function() {
 
 AppData.prototype.getInfoDeposit = function() {
     if(this.deposit) {
-        this.percentDeposit = depositPercent.value;
-        this.moneyDeposit = depositAmount.value;
+        this.percentDeposit = +depositPercent.value;
+        this.moneyDeposit = +depositAmount.value;
     }
 };
 
@@ -152,7 +155,7 @@ AppData.prototype.getIncomeMonth = function() {
 };
 
 AppData.prototype.getBudget = function() {
-    this.budgetMonth = parseInt(this.budget) + this.incomeMonth - this.expensesMonth + (this.moneyDeposit * this.percentDeposit)/12;
+    this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + (this.moneyDeposit * this.percentDeposit)/12;
     this.budgetDay = Math.floor(this.budgetMonth/30);
 };
 
