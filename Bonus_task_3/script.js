@@ -4,7 +4,7 @@ const text = document.querySelector('#color'),
 const getRandom = () => {
     let random =  Math.floor((Math.random()*256));
     //Здесь реализован "красивый вывод", чтобы цифр после решетки всегда было 6
-    if ((random < 10) || ((random > 10) && (random < 16))) {
+    if (random < 16) {
         return ('0' + random.toString(16));
     }else{
         return random.toString(16);
