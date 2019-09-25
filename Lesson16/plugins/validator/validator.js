@@ -63,25 +63,15 @@ class Validator {
     showError(elem) {
         elem.classList.remove('success');
         elem.classList.add('error');
-        if (elem.nextElementSibling) {
-            if (elem.nextElementSibling.classList.contains('validator-error')){
-                return;
-            }
-        }
-        const errorDiv = document.createElement('div');
-        errorDiv.textContent = 'Ошибка в этом поле';
-        errorDiv.classList.add('validator-error');
-        elem.insertAdjacentElement('afterend', errorDiv);
+        elem.value = '';
+        elem.placeholder = 'Ошибка в этом поле';
+      
     }
 
     showSuccess(elem) {
         elem.classList.remove('error');
         elem.classList.add('success');
-        if (elem.nextElementSibling) {
-            if (elem.nextElementSibling.classList.contains('validator-error')){
-                elem.nextElementSibling.remove();
-            }
-        }
+        
     }
 
     applyStyle() {
@@ -92,12 +82,9 @@ class Validator {
         }
         input.error {
             border: 2px solid red !important;
-        }
-        .validator-error {
-            color: red;
-            font-size: 12px;
-            font-family: sans-serif;
+            
         }`;
+        
         document.head.appendChild(style);
     }
 
