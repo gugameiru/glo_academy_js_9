@@ -74,13 +74,13 @@ const sendForm = () => {
         if (response.status != 200) {
             throw new Error('network status is not 200');
         }
-        console.log(response);
+        // console.log(response);
         statusMessage.textContent = successMessage;
     };
 
     const errorData = (error) => {
         statusMessage.textContent = errorMessage;
-        console.error(error);
+        // console.error(error);
     };
 
     const postData = (body, url) => {
