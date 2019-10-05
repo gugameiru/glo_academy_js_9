@@ -1,33 +1,54 @@
 window.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
-    //popup
+    //Получение разных кнопок и запуск разных функций
+    const getButtons = () => {
+        const body = document.querySelector('body');
+        body.addEventListener('click', (event) => {
+            let target = event.target;
+            
+            switch (true) {
+                case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1)):
+                    togglePopup(target);
+                    break;
+            }
+        });
+    };
 
-    const togglePopup = () => {
+    getButtons();
+
+
+    //Универсальный попап
+    const togglePopup = (target) => {
         const popupCall = document.querySelector('.popup-call'),
-            callBtn = document.querySelectorAll('.call-btn');
+            popupCheck = document.querySelector('.popup-check');
+        let popup;
+
+        if (target.className.indexOf('call-btn') != -1) {
+            popup = popupCall;
+        } else if (target.className.indexOf('check-btn') != -1) {
+            popup = popupCheck;
+        } else {
+            return;
+        }
 
         //Здесь реализовано отключение анимации для мобильных устройств
-        callBtn.forEach((elem) => {
-            elem.addEventListener('click', () => {
-                if (window.screen.width < 768) {
-                    popupCall.style.display = 'block';
-                } else {
-                    setOpacity(popupCall);
-                }
-            });
-        });
+        if (window.screen.width < 768) {
+            popup.style.display = 'block';
+        } else {
+            setOpacity(popup);
+        }
 
-        popupCall.addEventListener('click', (event) => {
+        popup.addEventListener('click', (event) => {
             let target = event.target;
 
             if (target.classList.contains('popup-close')) {
-                popupCall.style.display = 'none';
+                popup.style.display = 'none';
             } else {
                 target = target.closest('.popup-content');
                 console.log(target);
                 if (!target) {
-                    popupCall.style.display = 'none';
+                    popup.style.display = 'none';
                 }
             }
         });
@@ -48,7 +69,5 @@ window.addEventListener('DOMContentLoaded', function () {
             setTimeout(change, 0.1);
         }, 60);
     };
-
-    togglePopup();
 
 });
