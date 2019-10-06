@@ -9,9 +9,11 @@ window.addEventListener('DOMContentLoaded', function () {
             let target = event.target;
             
             switch (true) {
+                //Вызов универсального попапа
                 case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1) || (target.className.indexOf('discount-btn') != -1)):
                     togglePopup(target);
                     break;
+                //Вызов добавления блоков по кнопке Больше
                 case (target.className.indexOf('add-sentence-btn') != -1):
                     addSentense(target);
                     break;
