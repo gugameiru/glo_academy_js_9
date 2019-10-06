@@ -5,10 +5,12 @@ window.addEventListener('DOMContentLoaded', function () {
     const getButtons = () => {
         const body = document.querySelector('body');
         body.addEventListener('click', (event) => {
+            event.preventDefault();
             let target = event.target;
             
             switch (true) {
                 case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1) || (target.className.indexOf('discount-btn') != -1)):
+                    
                     togglePopup(target);
                     break;
                 case (target.className.indexOf('add-sentence-btn') != -1):
@@ -63,6 +65,7 @@ window.addEventListener('DOMContentLoaded', function () {
         elem.style.opacity = opacity;
         setTimeout(function change() {
             if (opacity > 1) {
+                elem.style.opacity = 1;
                 return;
             }
             elem.style.opacity = opacity;
