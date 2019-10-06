@@ -8,9 +8,13 @@ window.addEventListener('DOMContentLoaded', function () {
             let target = event.target;
             
             switch (true) {
-                case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1)):
+                case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1) || (target.className.indexOf('discount-btn') != -1)):
                     togglePopup(target);
                     break;
+                case (target.className.indexOf('add-sentence-btn') != -1):
+                    addSentense(target);
+                    break;
+
             }
         });
     };
@@ -21,13 +25,16 @@ window.addEventListener('DOMContentLoaded', function () {
     //Универсальный попап
     const togglePopup = (target) => {
         const popupCall = document.querySelector('.popup-call'),
-            popupCheck = document.querySelector('.popup-check');
+            popupCheck = document.querySelector('.popup-check'),
+            popupDiscount = document.querySelector('.popup-discount');
         let popup;
 
         if (target.className.indexOf('call-btn') != -1) {
             popup = popupCall;
         } else if (target.className.indexOf('check-btn') != -1) {
             popup = popupCheck;
+        } else if (target.className.indexOf('discount-btn') != -1) {
+            popup = popupDiscount;
         } else {
             return;
         }
@@ -46,7 +53,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 popup.style.display = 'none';
             } else {
                 target = target.closest('.popup-content');
-                console.log(target);
                 if (!target) {
                     popup.style.display = 'none';
                 }
@@ -68,6 +74,22 @@ window.addEventListener('DOMContentLoaded', function () {
             opacity += 0.01;
             setTimeout(change, 0.1);
         }, 60);
+    };
+
+    // Добавление блоков по кнопке "Больше"
+    const addSentense = (target) => {
+        const actionBlocks = document.querySelector('.text-center>.row').children;
+
+        Array.from(actionBlocks).forEach(function(element) {
+            if (element.classList.contains('display: none') != -1) {
+                element.className = 'col-xs-12 col-sm-6 col-md-4';
+                element.style.display = 'block';
+                console.log(element);
+
+            }
+        });
+        
+        target.style.display = 'none';
     };
 
 });
