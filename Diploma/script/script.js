@@ -15,18 +15,15 @@ window.addEventListener('DOMContentLoaded', function () {
                 case (target.className.indexOf('add-sentence-btn') != -1):
                     addSentense(target);
                     break;
-                // Следующие 3 кейса - работа с аккордеоном
+                // Следующие 2 кейса - работа с FAQ аккордеоном
                 case (target.getAttribute('role') == 'button'):
                     accordeonMoving(target);
                     break;
-                case (target.className.indexOf('panel-heading') != -1):
+                case ((target.className.indexOf('panel-heading') != -1)|| (target.className.indexOf('panel-title') != -1)):
                     target = target.querySelector('a');
                     accordeonMoving(target);
                     break;
-                case (target.className.indexOf('panel-title') != -1):
-                    target = target.querySelector('a');
-                    accordeonMoving(target);
-                    break;
+                
             }
         });
     };
@@ -95,6 +92,7 @@ window.addEventListener('DOMContentLoaded', function () {
         target.style.display = 'none';
     };
 
+    //FAQ Аккордеон
     const accordeonMoving = (target) => {
         const panelClass = target.getAttribute('aria-controls'),
             accordion = document.getElementById('accordion-two'),
