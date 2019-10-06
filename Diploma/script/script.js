@@ -10,13 +10,23 @@ window.addEventListener('DOMContentLoaded', function () {
             
             switch (true) {
                 case ((target.className.indexOf('call-btn') != -1) || (target.className.indexOf('check-btn') != -1) || (target.className.indexOf('discount-btn') != -1)):
-                    
                     togglePopup(target);
                     break;
                 case (target.className.indexOf('add-sentence-btn') != -1):
                     addSentense(target);
                     break;
-
+                // Следующие 3 кейса - работа с аккордеоном
+                case (target.getAttribute('role') == 'button'):
+                    accordeonMoving(target);
+                    break;
+                case (target.className.indexOf('panel-heading') != -1):
+                    target = target.querySelector('a');
+                    accordeonMoving(target);
+                    break;
+                case (target.className.indexOf('panel-title') != -1):
+                    target = target.querySelector('a');
+                    accordeonMoving(target);
+                    break;
             }
         });
     };
@@ -83,6 +93,14 @@ window.addEventListener('DOMContentLoaded', function () {
         });
 
         target.style.display = 'none';
+    };
+
+    const accordeonMoving = (target) => {
+        const panelClass = target.getAttribute('aria-controls');
+        const thisPanel = document.getElementById(panelClass);
+        
+        thisPanel.classList.toggle('in');        
+        
     };
 
 });
