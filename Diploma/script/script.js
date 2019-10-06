@@ -39,13 +39,8 @@ window.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        //Здесь реализовано отключение анимации для мобильных устройств
-        if (window.screen.width < 768) {
-            popup.style.display = 'block';
-        } else {
-            setOpacity(popup);
-        }
-
+        setOpacity(popup);
+        
         popup.addEventListener('click', (event) => {
             let target = event.target;
 
@@ -81,14 +76,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const actionBlocks = document.querySelector('.text-center>.row').children;
 
         Array.from(actionBlocks).forEach(function(element) {
-            if (element.classList.contains('display: none') != -1) {
                 element.className = 'col-xs-12 col-sm-6 col-md-4';
-                element.style.display = 'block';
-                console.log(element);
-
-            }
         });
-        
+
         target.style.display = 'none';
     };
 
