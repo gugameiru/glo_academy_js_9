@@ -96,8 +96,16 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     const accordeonMoving = (target) => {
-        const panelClass = target.getAttribute('aria-controls');
+        const panelClass = target.getAttribute('aria-controls'),
+            accordion = document.getElementById('accordion-two'),
+            allPanels = accordion.querySelectorAll('.panel-collapse');
         const thisPanel = document.getElementById(panelClass);
+
+        allPanels.forEach(elem => {
+            if (elem.id != thisPanel) {
+                elem.classList.remove('in');
+            }
+        });
         
         thisPanel.classList.toggle('in');        
         
